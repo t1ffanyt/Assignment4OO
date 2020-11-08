@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="Maven: org.openjfx:javafx-base:mac:12">
+  <library name="Maven: org.openjfx:javafx-base:linux:12">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12/javafx-base-12-mac.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12/javafx-base-12-linux.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12/javafx-base-12-javadoc.jar!/" />
