@@ -36,7 +36,7 @@ public class TeamListCellViewModel extends ListCell<Team> {
             setGraphic(null);
         } else {
             if(loader == null) {
-                loader = new FXMLLoader(EmployeeListCellViewModel.class.getResource(fxmlPath));
+                loader = new FXMLLoader(TeamListCellViewModel.class.getResource(fxmlPath));
                 loader.setController(this);
                 try {
                     loader.load();
