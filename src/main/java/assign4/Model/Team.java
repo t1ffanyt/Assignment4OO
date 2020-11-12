@@ -22,6 +22,10 @@ public class Team implements PropertyChangeListener {
 
     }
 
+    public void addObserver(ListViewModel listViewModel) {
+
+    }
+
     @Override
     public String toString() {
         return "Team{" +
