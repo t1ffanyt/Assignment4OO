@@ -14,7 +14,7 @@ import java.io.IOException;
     mercilessly swiped from:
     https://www.turais.de/how-to-custom-listview-cell-in-javafx/
  */
-public class EmployeeListCellViewModel extends ListCell<Team> {
+public class TeamListCellViewModel extends ListCell<Team> {
     private static final String fxmlPath = "/view/teamlistcell.fxml";
 
     // the cell will use an fxml loader to load its fxml the first time it is visible
