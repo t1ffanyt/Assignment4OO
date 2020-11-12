@@ -1,8 +1,12 @@
 package assign4.Model;
 
 import java.time.LocalDateTime;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Team {
+import java.beans.*;
+
+public class Team implements PropertyChangeListener {
     private String teamName;
     private int score;
     private LocalDateTime lastModified;
@@ -11,6 +15,11 @@ public class Team {
         this.teamName = "No name provided";
         this.score = 0;
         this.lastModified = LocalDateTime.now();
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
+
     }
 
     @Override
@@ -45,4 +54,5 @@ public class Team {
     public void setLastModified(LocalDateTime lastModified) {
         this.lastModified = lastModified;
     }
+
 }
