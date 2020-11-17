@@ -7,6 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +29,9 @@ public class ListViewModel extends AnchorPane implements PropertyChangeListener 
 
     private FXMLLoader loader;
 
+    private static Scene scene;
+
+
     public ListViewModel(ArrayList<Team> teams) {
         super();
         teamList = FXCollections.observableArrayList(teams);
@@ -36,10 +41,6 @@ public class ListViewModel extends AnchorPane implements PropertyChangeListener 
         }
         listView = new ListView();
         listView.setItems(teamList);
-
-        // teaching: give our list view a list cell instance to apply to all of its model data
-        //Commented out this line and the text appeared
-       // listView.setCellFactory((whoCares) -> new TeamListCellViewModel());
 
         listView.setMinWidth(600);
         listView.setPrefHeight(300);

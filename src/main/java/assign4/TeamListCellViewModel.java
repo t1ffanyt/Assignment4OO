@@ -26,7 +26,7 @@ public class TeamListCellViewModel extends ListCell<Team> {
     @FXML
     private Label teamName;
 
-    /** this is what we need to override for a custom list cell
+    // this is what we need to override for a custom list cell
     @Override
     protected void updateItem(Team team, boolean empty) {
         super.updateItem(team, empty);
@@ -44,14 +44,12 @@ public class TeamListCellViewModel extends ListCell<Team> {
                     e.printStackTrace();
                 }
             }
-
             teamName.setText(formatTeamName(team.getTeamName()));
-
             setText(null);
             setGraphic(hbox);
         }
     }
-**/
+
     // if name is longer than 50 chars then chop take left and append ... to it
     private String formatTeamName(String name) {
         if(name.length() > 50)

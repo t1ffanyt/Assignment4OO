@@ -33,12 +33,9 @@ public class Main extends Application {
             t.setTeamName(split[0]);
             listViewArr.add(t);
         }
-        ListViewModel viewModel = new ListViewModel(listViewArr);
         csvReader.close();
-        scene = new Scene((Parent)viewModel);
-        stage.setTitle("CS 4773 Assignment 4");
-        stage.setScene(scene);
-        stage.show();
+        TeamFacade facade = new TeamFacade(listViewArr);
+        facade.start();
 
     }
 
