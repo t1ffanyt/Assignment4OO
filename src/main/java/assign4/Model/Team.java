@@ -28,11 +28,8 @@ public class Team implements PropertyChangeListener {
 
     @Override
     public String toString() {
-        return "Team{" +
-                "teamName='" + teamName + '\'' +
-                ", score=" + score +
-                ", lastModified=" + lastModified +
-                '}';
+        String format = "%-" + Integer.toString(80-teamName.length()) + "s%d";
+        return String.format(format, teamName, score);
     }
 
     public String getTeamName() {

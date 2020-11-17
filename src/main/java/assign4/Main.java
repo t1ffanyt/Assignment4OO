@@ -1,5 +1,6 @@
 package assign4;
 
+import assign4.Model.ListViewModel;
 import assign4.Model.Team;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +22,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 700, 500);
+        String row = "";
+        String pathToCsv = "TeamData.csv";
+        ArrayList<Team> listViewArr = new ArrayList<Team>();
+        BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
+        while ((row = csvReader.readLine()) != null) {
+            String[] split = row.split(",");
+            Team t = new Team();
+            t.setScore(Integer.parseInt(split[1]));
+            t.setTeamName(split[0]);
+            listViewArr.add(t);
+        }
+        ListViewModel viewModel = new ListViewModel(listViewArr);
+        csvReader.close();
+        scene = new Scene((Parent)viewModel);
         stage.setTitle("CS 4773 Assignment 4");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -37,18 +52,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException{
-        String row = "";
-        String pathToCsv = "TeamData.csv";
-        ArrayList<Team> listViewArr = new ArrayList<Team>();
-        BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
-        while ((row = csvReader.readLine()) != null) {
-           String[] split = row.split(",");
-           Team t = new Team();
-           t.setScore(Integer.parseInt(split[1]));
-           t.setTeamName(split[0]);
-           listViewArr.add(t);
-        }
-        csvReader.close();
         launch();
     }
 

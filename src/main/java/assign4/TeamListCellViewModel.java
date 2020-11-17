@@ -15,7 +15,7 @@ import java.io.IOException;
     https://www.turais.de/how-to-custom-listview-cell-in-javafx/
  */
 public class TeamListCellViewModel extends ListCell<Team> {
-    private static final String fxmlPath = "/view/teamlistcell.fxml";
+    private static final String fxmlPath = "/assign4/TeamListView.fxml";
 
     // the cell will use an fxml loader to load its fxml the first time it is visible
     private FXMLLoader loader;
@@ -26,7 +26,7 @@ public class TeamListCellViewModel extends ListCell<Team> {
     @FXML
     private Label teamName;
 
-    // this is what we need to override for a custom list cell
+    /** this is what we need to override for a custom list cell
     @Override
     protected void updateItem(Team team, boolean empty) {
         super.updateItem(team, empty);
@@ -51,7 +51,7 @@ public class TeamListCellViewModel extends ListCell<Team> {
             setGraphic(hbox);
         }
     }
-
+**/
     // if name is longer than 50 chars then chop take left and append ... to it
     private String formatTeamName(String name) {
         if(name.length() > 50)
