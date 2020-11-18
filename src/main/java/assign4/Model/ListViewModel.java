@@ -53,7 +53,8 @@ public class ListViewModel extends AnchorPane implements PropertyChangeListener 
                     Team selected = (Team) listView.getSelectionModel().getSelectedItem();
                     // Open new detail window with the selected model
                     try {
-                        Main.setRoot("secondary");
+                        
+                        Main.setRoot("TeamEditorViewModel");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

@@ -4,8 +4,10 @@ import assign4.Model.Team;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import java.io.IOException;
 
@@ -24,7 +26,19 @@ public class TeamListCellViewModel extends ListCell<Team> {
     private HBox hbox;
 
     @FXML
-    private Label teamName;
+    private Button saveButton;
+
+    @FXML
+    private TextField teamNameField;
+
+
+    @FXML
+    private TextField teamScoreField;
+
+    @FXML
+    private TextField lastUpdatedField;
+
+
 
     // this is what we need to override for a custom list cell
     @Override
@@ -44,7 +58,7 @@ public class TeamListCellViewModel extends ListCell<Team> {
                     e.printStackTrace();
                 }
             }
-            teamName.setText(formatTeamName(team.getTeamName()));
+            teamNameField.setText(formatTeamName(team.getTeamName()));
             setText(null);
             setGraphic(hbox);
         }
@@ -55,5 +69,30 @@ public class TeamListCellViewModel extends ListCell<Team> {
         if(name.length() > 50)
             return name.substring(0, 48) + "...";
         return name;
+    }
+
+    public TextField getTeamScoreField() {
+        return teamScoreField;
+    }
+
+    public void setTeamScoreField(String teamScoreField) {
+        this.teamScoreField.setText(teamScoreField);
+    }
+
+    public TextField getLastUpdatedField() {
+        return lastUpdatedField;
+    }
+
+    public void setLastUpdatedField(String lastUpdatedField) {
+
+        this.lastUpdatedField.setText(lastUpdatedField);
+    }
+
+    public TextField getTeamNameField() {
+        return teamNameField;
+    }
+
+    public void setTeamNameField(String teamNameField) {
+        this.teamNameField.setText(teamNameField);
     }
 }

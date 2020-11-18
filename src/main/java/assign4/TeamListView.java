@@ -8,6 +8,6 @@ import javafx.scene.control.ListView;
 public class TeamListView{
 
     private void switchToSecondary() throws IOException {
-        Main.setRoot("secondary");
+       // Main.setRoot("TeamEditorViewModel");
     }
 }

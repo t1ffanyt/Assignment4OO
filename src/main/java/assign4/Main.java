@@ -7,8 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,28 +17,18 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
-    private static Scene scene;
+    TeamFacade facade = new TeamFacade();
 
     @Override
     public void start(Stage stage) throws IOException {
-        String row = "";
-        String pathToCsv = "TeamData.csv";
-        ArrayList<Team> listViewArr = new ArrayList<Team>();
-        BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
-        while ((row = csvReader.readLine()) != null) {
-            String[] split = row.split(",");
-            Team t = new Team();
-            t.setScore(Integer.parseInt(split[1]));
-            t.setTeamName(split[0]);
-            listViewArr.add(t);
-        }
-        csvReader.close();
-        TeamFacade facade = new TeamFacade(listViewArr);
         facade.start();
-
+    }
+    public void startEditor(){
+        facade.openTeamEditorWindow();
     }
 
-    public static void setRoot(String fxml) throws IOException {
+
+    public static void setRoot(String fxml,Scene scene) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -51,5 +40,6 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException{
         launch();
     }
+
 
 }
