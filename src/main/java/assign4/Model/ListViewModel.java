@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -48,17 +50,33 @@ public class ListViewModel extends AnchorPane implements PropertyChangeListener 
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent click) {
+                Parent root;
                 if (click.getClickCount() == 2) {
                     if (listView.getSelectionModel().getSelectedItem() == null) return;
-                    Team selected = (Team) listView.getSelectionModel().getSelectedItem();
+                    Team team = (Team) listView.getSelectionModel().getSelectedItem();
                     // Open new detail window with the selected model
+                    TeamListCellViewModel listCellViewModel = new TeamListCellViewModel();
+                    // root = FXMLLoader.load(getClass().getClassLoader().getResource("assign4/TeamEditorViewModel"),resources);
+                    Stage stage = new Stage();
+                    Scene scene = new Scene((Parent)listCellViewModel);
+                    stage.setTitle("Editing " + team.getTeamName());
+                    stage.setScene(scene);
                     try {
-                        
-                        Main.setRoot("TeamEditorViewModel");
+                        Main.setRoot("TeamEditorViewModel",scene);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("*** double click on " + selected);
+                    System.out.println(team.getTeamName());
+                    listCellViewModel.setTeamNameField(team.getTeamName());
+                    listCellViewModel.setLastUpdatedField(team.getLastModified().toString());
+                    listCellViewModel.setTeamScoreField(Integer.toString(team.getScore()));
+
+                    stage.show();
+                    // Hide this current window (if this is what you want)
+                    //((Node)(event.getSource())).getScene().getWindow().hide();
+
+
+                    System.out.println("*** double click on " + team);
                 }
             }
         });

@@ -40,7 +40,7 @@ public class TeamFacade {
     public void openTeamEditorWindow(Team team){
         Scene scene = new Scene((Parent)cellView);
         Stage stage = new Stage();
-        stage.setTitle("Editing " + team.getTeamName() );
+        stage.setTitle("Editing " + team.getTeamName());
         cellView.setTeamNameField(team.getTeamName());
         cellView.setLastUpdatedField(team.getLastModified().toString());
         cellView.setTeamScoreField(Integer.toString(team.getScore()));

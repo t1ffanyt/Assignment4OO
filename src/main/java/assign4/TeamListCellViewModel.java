@@ -38,7 +38,14 @@ public class TeamListCellViewModel extends ListCell<Team> {
     @FXML
     private TextField lastUpdatedField;
 
+    public TeamListCellViewModel(){
+        teamNameField = new TextField();
+        teamScoreField = new TextField();
+        lastUpdatedField = new TextField();
+        saveButton = new Button();
 
+
+    }
 
     // this is what we need to override for a custom list cell
     @Override

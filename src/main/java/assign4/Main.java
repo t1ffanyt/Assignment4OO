@@ -24,9 +24,8 @@ public class Main extends Application {
         facade.start();
     }
     public void startEditor(){
-        facade.openTeamEditorWindow();
+      //  facade.openTeamEditorWindow();
     }
-
 
     public static void setRoot(String fxml,Scene scene) throws IOException {
         scene.setRoot(loadFXML(fxml));
