@@ -1,8 +1,8 @@
 package assign4.Model;
 
+import assign4.TeamListViewModel;
+
 import java.time.LocalDateTime;
-import java.util.Observable;
-import java.util.Observer;
 
 import java.beans.*;
 
@@ -22,7 +22,7 @@ public class Team implements PropertyChangeListener {
 
     }
 
-    public void addObserver(ListViewModel listViewModel) {
+    public void addObserver(TeamListViewModel teamListViewModel) {
 
     }
 
@@ -53,7 +53,7 @@ public class Team implements PropertyChangeListener {
     }
 
     public void setLastModified(LocalDateTime lastModified) {
-        this.lastModified = lastModified;
+        this.lastModified = LocalDateTime.now();
     }
 
 }

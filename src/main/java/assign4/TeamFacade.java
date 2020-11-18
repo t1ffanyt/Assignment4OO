@@ -1,6 +1,5 @@
 package assign4;
 
-import assign4.Model.ListViewModel;
 import assign4.Model.Team;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class TeamFacade {
 
-    private ListViewModel listView;
+    private TeamListViewModel listView;
     private TeamListCellViewModel cellView;
     private FileHandler fileHandler;
     private Team currentTeam;
@@ -24,8 +23,9 @@ public class TeamFacade {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listView = new ListViewModel(listViewArr);
-        cellView = new TeamListCellViewModel();
+        currentTeam = new Team();
+        listView = new TeamListViewModel(listViewArr);
+        cellView = new TeamListCellViewModel(currentTeam);
         currentTeam = new Team();
 
     }

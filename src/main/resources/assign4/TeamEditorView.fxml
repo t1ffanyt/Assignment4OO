@@ -25,7 +25,7 @@
         <TextField fx:id="teamNameField" GridPane.columnIndex="1" />
         <TextField fx:id="teamScoreField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label text="Last Updated" GridPane.rowIndex="2" />
-        <TextField fx:id="lastUpdated" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="lastUpdatedField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="234.0" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     </children>
     <padding>

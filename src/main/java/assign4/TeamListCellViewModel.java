@@ -2,13 +2,19 @@ package assign4;
 
 import assign4.Model.Team;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 /*
@@ -16,7 +22,7 @@ import java.io.IOException;
     mercilessly swiped from:
     https://www.turais.de/how-to-custom-listview-cell-in-javafx/
  */
-public class TeamListCellViewModel extends ListCell<Team> {
+public class TeamListCellViewModel extends ListCell<Team>{
     private static final String fxmlPath = "/assign4/TeamListView.fxml";
 
     // the cell will use an fxml loader to load its fxml the first time it is visible
@@ -31,20 +37,34 @@ public class TeamListCellViewModel extends ListCell<Team> {
     @FXML
     private TextField teamNameField;
 
-
     @FXML
     private TextField teamScoreField;
 
     @FXML
     private TextField lastUpdatedField;
 
-    public TeamListCellViewModel(){
+    public TeamListCellViewModel(Team team){
         teamNameField = new TextField();
+        teamNameField.setText(team.getTeamName());
         teamScoreField = new TextField();
+        teamScoreField.setText(Integer.toString(team.getScore()));
         lastUpdatedField = new TextField();
+        lastUpdatedField.setText(team.getLastModified().toString());
         saveButton = new Button();
+        hbox = new HBox();
 
-
+        saveButton.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle (ActionEvent e){
+                System.out.println("Button Clicked!");
+                if(teamScoreField.getText() != null && teamNameField.getText() != null){
+                    updateItem(team,false);
+                }else{
+                    updateItem(team,true);
+                }
+            }
+        });
+        this.getChildren().add(saveButton);
     }
 
     // this is what we need to override for a custom list cell
@@ -102,4 +122,5 @@ public class TeamListCellViewModel extends ListCell<Team> {
     public void setTeamNameField(String teamNameField) {
         this.teamNameField.setText(teamNameField);
     }
+
 }

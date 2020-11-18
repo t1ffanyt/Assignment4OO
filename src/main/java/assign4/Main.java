@@ -1,7 +1,5 @@
 package assign4;
 
-import assign4.Model.ListViewModel;
-import assign4.Model.Team;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 /**
