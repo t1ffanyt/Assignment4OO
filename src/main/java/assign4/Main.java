@@ -1,7 +1,5 @@
 package assign4;
 
-import assign4.Model.ListViewModel;
-import assign4.Model.Team;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -17,15 +15,38 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
-    TeamFacade facade = new TeamFacade();
-
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
+        /*
+        TeamFactory tf = new TeamFactory();
+        ViewModelFactory vmf = new ViewModelFactory(tf);
+        ViewHandler vh = new ViewHandler(stage, vmf);
+        vh.start();
+        runAutoUpdate((TeamModelManager) tf.getTeamModel());
+         */
+
+        TeamFacade facade = new TeamFacade();
         facade.start();
     }
-    public void startEditor(){
-      //  facade.openTeamEditorWindow();
+
+    /*
+    private void runAutoUpdate(TeamModelManager m) {
+        Thread thread = new Thread(() -> {
+            Random r = new Random();
+            while (true) {
+                m.recalculateData();
+                try {
+                    Thread.sleep(r.nextInt(500) + 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
+    */
+
 
     public static void setRoot(String fxml,Scene scene) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -36,9 +57,8 @@ public class Main extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws Exception {
         launch();
     }
-
 
 }

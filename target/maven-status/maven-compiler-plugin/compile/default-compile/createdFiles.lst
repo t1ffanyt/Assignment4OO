@@ -1,1 +1,3 @@
-assign4/Model/Team.class
+assign4/viewmodel/TeamListCellViewModel.class
+assign4/viewmodel/TeamListViewModel.class
+assign4/model/Team.class

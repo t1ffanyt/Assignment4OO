@@ -1,7 +1,8 @@
 package assign4;
 
-import assign4.Model.ListViewModel;
-import assign4.Model.Team;
+import assign4.model.Team;
+import assign4.viewmodel.TeamEditorViewModel;
+import assign4.viewmodel.TeamListViewModel;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 
 public class TeamFacade {
 
-    private ListViewModel listView;
-    private TeamListCellViewModel cellView;
+    private TeamListViewModel listView;
+    private TeamEditorViewModel cellView;
     private FileHandler fileHandler;
     private Team currentTeam;
 
@@ -24,8 +25,8 @@ public class TeamFacade {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listView = new ListViewModel(listViewArr);
-        cellView = new TeamListCellViewModel();
+        listView = new TeamListViewModel(listViewArr);
+        cellView = new TeamEditorViewModel();
         currentTeam = new Team();
 
     }
@@ -35,8 +36,8 @@ public class TeamFacade {
         stage.setTitle("CS 4773 Assignment 4");
         stage.setScene(scene);
         stage.show();
-
     }
+    /**
     public void openTeamEditorWindow(Team team){
         Scene scene = new Scene((Parent)cellView);
         Stage stage = new Stage();
@@ -48,11 +49,5 @@ public class TeamFacade {
         stage.show();
 
     }
-    public void setCurrentTeam(Team team){
-        this.currentTeam = team;
-    }
-
-
-
-
+     **/
 }

@@ -1,6 +1,6 @@
 package assign4;
 
-import assign4.Model.Team;
+import assign4.model.Team;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class FileHandler {
     private String pathToFile;
 
-
     public FileHandler(){
         pathToFile = "TeamData.csv";
     }
+
     public ArrayList<Team> readCsvFile() throws IOException {
         String row = "";
         ArrayList<Team> listViewArr = new ArrayList<>();

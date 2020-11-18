@@ -1,8 +1,8 @@
-package assign4.Model;
+package assign4.model;
+
+import assign4.viewmodel.TeamListViewModel;
 
 import java.time.LocalDateTime;
-import java.util.Observable;
-import java.util.Observer;
 
 import java.beans.*;
 
@@ -22,7 +22,7 @@ public class Team implements PropertyChangeListener {
 
     }
 
-    public void addObserver(ListViewModel listViewModel) {
+    public void addObserver(TeamListViewModel listViewModel) {
 
     }
 
