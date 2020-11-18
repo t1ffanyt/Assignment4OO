@@ -1,9 +1,7 @@
 package assign4.model;
 
 import assign4.viewmodel.TeamListViewModel;
-
 import java.time.LocalDateTime;
-
 import java.beans.*;
 
 public class Team implements PropertyChangeListener {
@@ -53,7 +51,7 @@ public class Team implements PropertyChangeListener {
     }
 
     public void setLastModified(LocalDateTime lastModified) {
-        this.lastModified = lastModified;
+        this.lastModified = LocalDateTime.now();
     }
 
 }

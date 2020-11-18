@@ -11,9 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TeamFacade {
-
-    private TeamListViewModel listView;
-    private TeamEditorViewModel cellView;
+    private TeamEditorViewModel editorViewModel;
+    private TeamListViewModel listViewModel;
     private FileHandler fileHandler;
     private Team currentTeam;
 
@@ -25,13 +24,13 @@ public class TeamFacade {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listView = new TeamListViewModel(listViewArr);
-        cellView = new TeamEditorViewModel();
+        listViewModel = new TeamListViewModel(listViewArr);
+        editorViewModel = new TeamEditorViewModel();
         currentTeam = new Team();
 
     }
     public void start(){
-        Scene scene = new Scene((Parent)listView);
+        Scene scene = new Scene((Parent)listViewModel);
         Stage stage = new Stage();
         stage.setTitle("CS 4773 Assignment 4");
         stage.setScene(scene);
