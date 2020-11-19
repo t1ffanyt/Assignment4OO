@@ -40,12 +40,9 @@ public class TeamEditorController implements Initializable {
     public void saveClicked(ActionEvent actionEvent) {
         try{
             teamEditorViewModel.save();
-
         }catch(RuntimeException e){
             System.out.println("Save Error" + e);
-
         }
-        //viewModel.updateListView();
     }
     public void setViewModel(TeamEditorViewModel viewModel){
         this.teamEditorViewModel = viewModel;

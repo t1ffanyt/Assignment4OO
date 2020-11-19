@@ -14,36 +14,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        /*
-        TeamFactory tf = new TeamFactory();
-        ViewModelFactory vmf = new ViewModelFactory(tf);
-        ViewHandler vh = new ViewHandler(stage, vmf);
-        vh.start();
-        runAutoUpdate((TeamModelManager) tf.getTeamModel());
-         */
-
         TeamFacade facade = new TeamFacade(stage);
         facade.openTeamListViewWindow();
     }
-
-    /*
-    private void runAutoUpdate(TeamModelManager m) {
-        Thread thread = new Thread(() -> {
-            Random r = new Random();
-            while (true) {
-                m.recalculateData();
-                try {
-                    Thread.sleep(r.nextInt(500) + 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.setDaemon(true);
-        thread.start();
-    }
-    */
-
 
     public static void setRoot(String fxml,Scene scene) throws IOException {
         scene.setRoot(loadFXML(fxml));

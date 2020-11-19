@@ -1,11 +1,13 @@
 package assign4.viewmodel;
 
 import assign4.Main;
+import assign4.TeamFacade;
 import assign4.model.Team;
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -47,23 +49,21 @@ public class TeamListViewModel extends AnchorPane implements PropertyChangeListe
                 // Open new detail window with the selected model
                 TeamEditorViewModel listCellViewModel = new TeamEditorViewModel(team);
                 // root = FXMLLoader.load(getClass().getClassLoader().getResource("assign4/TeamEditorViewModel"),resources);
-                Stage stage = new Stage();
+                /**
+
                 Scene scene = new Scene((Parent)listCellViewModel);
                 stage.setTitle("Editing " + team.getTeamName());
                 stage.setScene(scene);
-                try {
-                    Main.setRoot("/view/teameditor/TeamEditorView",scene);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 System.out.println(team.getTeamName());
-               // listCellViewModel.setTeamNameField(team.getTeamName());
-               // listCellViewModel.setLastUpdatedField(team.getLastModified().toString());
-               // listCellViewModel.setTeamScoreField(Integer.toString(team.getScore()));
+                 */
+                Stage stage = new Stage();
+                TeamFacade teamFacade = new TeamFacade(stage);
+                try{
+                    teamFacade.openTeamEditorWindow(team);
+                }catch(IOException e){
+                    System.out.println(e);
+                }
 
-                stage.show();
-                // Hide this current window (if this is what you want)
-                //((Node)(event.getSource())).getScene().getWindow().hide();
                 System.out.println("*** double click on " + team);
             }
         });
