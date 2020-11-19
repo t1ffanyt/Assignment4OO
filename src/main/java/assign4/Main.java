@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * JavaFX App
@@ -23,8 +22,8 @@ public class Main extends Application {
         runAutoUpdate((TeamModelManager) tf.getTeamModel());
          */
 
-        TeamFacade facade = new TeamFacade();
-        facade.start();
+        TeamFacade facade = new TeamFacade(stage);
+        facade.openTeamListViewWindow();
     }
 
     /*

@@ -1,6 +1,8 @@
 package assign4;
 
 import assign4.model.Team;
+import assign4.view.teameditor.TeamEditorController;
+import assign4.view.teamlist.TeamListController;
 import assign4.viewmodel.TeamEditorViewModel;
 import assign4.viewmodel.TeamListViewModel;
 import javafx.scene.Parent;
@@ -12,41 +14,42 @@ import java.util.ArrayList;
 
 public class TeamFacade {
     private TeamEditorViewModel editorViewModel;
-    private TeamListViewModel listViewModel;
+    private TeamListViewModel teamListViewModel;
     private FileHandler fileHandler;
-    private Team currentTeam;
+    private ArrayList<Team> teams;
+    private Stage stage;
 
-    public TeamFacade(){
-        ArrayList<Team> listViewArr = new ArrayList<>();
+    public TeamFacade(Stage stage){
+        teams = new ArrayList<>();
+        this.stage = stage;
         fileHandler = new FileHandler();
         try {
-            listViewArr = fileHandler.readCsvFile();
+            teams = fileHandler.readCsvFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listViewModel = new TeamListViewModel(listViewArr);
-        editorViewModel = new TeamEditorViewModel();
-        currentTeam = new Team();
-
     }
-    public void start(){
-        Scene scene = new Scene((Parent)listViewModel);
-        Stage stage = new Stage();
+    public void openTeamListViewWindow(){
+        TeamListController teamListController = new TeamListController(teams);
+        teamListViewModel = new TeamListViewModel(teams);
+        teamListController.setViewModel(teamListViewModel);
+        Scene scene = new Scene((Parent) teamListViewModel);
         stage.setTitle("CS 4773 Assignment 4");
         stage.setScene(scene);
         stage.show();
     }
-    /**
+
     public void openTeamEditorWindow(Team team){
-        Scene scene = new Scene((Parent)cellView);
+        TeamEditorController teamEditorController = new TeamEditorController(team);
+        editorViewModel = new TeamEditorViewModel(team);
+        teamEditorController.setViewModel(editorViewModel);
+        Scene scene = new Scene((Parent)editorViewModel);
         Stage stage = new Stage();
         stage.setTitle("Editing " + team.getTeamName());
-        cellView.setTeamNameField(team.getTeamName());
-        cellView.setLastUpdatedField(team.getLastModified().toString());
-        cellView.setTeamScoreField(Integer.toString(team.getScore()));
+        editorViewModel.initialize(null,null);
         stage.setScene(scene);
         stage.show();
 
     }
-     **/
+
 }

@@ -2,6 +2,7 @@ package assign4.viewmodel;
 
 import assign4.Main;
 import assign4.model.Team;
+import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,9 +29,10 @@ public class TeamListViewModel extends AnchorPane implements PropertyChangeListe
         super();
         teamList = FXCollections.observableArrayList(teams);
         // list view model needs to register as an observer for all of our team models
-        for (Team team: teams) {
+        for (Team team: teamList) {
             team.addObserver(this);
         }
+
         listView = new ListView();
         listView.setItems(teamList);
 
@@ -43,21 +45,21 @@ public class TeamListViewModel extends AnchorPane implements PropertyChangeListe
                 if (listView.getSelectionModel().getSelectedItem() == null) return;
                 Team team = (Team) listView.getSelectionModel().getSelectedItem();
                 // Open new detail window with the selected model
-                TeamEditorViewModel listCellViewModel = new TeamEditorViewModel();
+                TeamEditorViewModel listCellViewModel = new TeamEditorViewModel(team);
                 // root = FXMLLoader.load(getClass().getClassLoader().getResource("assign4/TeamEditorViewModel"),resources);
                 Stage stage = new Stage();
                 Scene scene = new Scene((Parent)listCellViewModel);
                 stage.setTitle("Editing " + team.getTeamName());
                 stage.setScene(scene);
                 try {
-                    Main.setRoot("TeamEditorView",scene);
+                    Main.setRoot("/view/teameditor/TeamEditorView",scene);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 System.out.println(team.getTeamName());
-                listCellViewModel.setTeamNameField(team.getTeamName());
-                listCellViewModel.setLastUpdatedField(team.getLastModified().toString());
-                listCellViewModel.setTeamScoreField(Integer.toString(team.getScore()));
+               // listCellViewModel.setTeamNameField(team.getTeamName());
+               // listCellViewModel.setLastUpdatedField(team.getLastModified().toString());
+               // listCellViewModel.setTeamScoreField(Integer.toString(team.getScore()));
 
                 stage.show();
                 // Hide this current window (if this is what you want)
@@ -72,5 +74,12 @@ public class TeamListViewModel extends AnchorPane implements PropertyChangeListe
     @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
         listView.refresh();
+    }
+
+    public Property<String> listProperty() {
+        return null;
+    }
+
+    public void openEditor() {
     }
 }

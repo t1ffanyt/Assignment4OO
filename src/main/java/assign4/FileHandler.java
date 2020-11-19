@@ -17,17 +17,15 @@ public class FileHandler {
 
     public ArrayList<Team> readCsvFile() throws IOException {
         String row = "";
-        ArrayList<Team> listViewArr = new ArrayList<>();
+        ArrayList<Team> teams = new ArrayList<>();
         BufferedReader csvReader = new BufferedReader(new FileReader(pathToFile));
         while ((row = csvReader.readLine()) != null) {
             String[] split = row.split(",");
-            Team t = new Team();
-            t.setScore(Integer.parseInt(split[1]));
-            t.setTeamName(split[0]);
-            listViewArr.add(t);
+            Team t = new Team(split[0],Integer.parseInt(split[1]));
+            teams.add(t);
         }
         csvReader.close();
-        return listViewArr;
+        return teams;
     }
 
 }
