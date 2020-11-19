@@ -27,11 +27,12 @@ public class TeamEditorViewModel extends ListCell<Team> implements Initializable
     @FXML
     private TextField lastUpdatedField;
 
-    @FXML
-    private Button saveButton;
 
     public TeamEditorViewModel(Team team){
         this.team = team;
+        teamNameField = new TextField();
+        teamScoreField = new TextField();
+        lastUpdatedField = new TextField();
 
     }
 

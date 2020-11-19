@@ -46,8 +46,6 @@ public class Team {
         observers.add(observer);
     }
 
-
-
     public String getTeamName() {
         return teamName;
     }
